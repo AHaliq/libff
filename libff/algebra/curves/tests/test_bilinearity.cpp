@@ -8,10 +8,6 @@
 
 #include <libff/algebra/curves/edwards/edwards_pp.hpp>
 #include <libff/common/profiling.hpp>
-#ifdef CURVE_BN128
-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
-#endif
 #include <libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp>
 #include <libff/algebra/curves/bls12_381/bls12_381_pp.hpp>
 #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
@@ -29,9 +25,6 @@ public:
         mnt6_pp::init_public_params();
         alt_bn128_pp::init_public_params();
         bls12_381_pp::init_public_params();
-#ifdef CURVE_BN128 // BN128 has fancy dependencies so it may be disabled
-        bn128_pp::init_public_params();
-#endif
     }
 };
 
@@ -134,9 +127,6 @@ TEST_F(CurveBilinearityTest, PairingTest)
     pairing_test<mnt4_pp>();
     pairing_test<alt_bn128_pp>();
     pairing_test<bls12_381_pp>();
-#ifdef CURVE_BN128       // BN128 has fancy dependencies so it may be disabled
-    pairing_test<bn128_pp>();
-#endif
 }
 
 TEST_F(CurveBilinearityTest, DoubleMillerLoopTest)
@@ -146,9 +136,6 @@ TEST_F(CurveBilinearityTest, DoubleMillerLoopTest)
     double_miller_loop_test<mnt4_pp>();
     double_miller_loop_test<alt_bn128_pp>();
     double_miller_loop_test<bls12_381_pp>();
-#ifdef CURVE_BN128       // BN128 has fancy dependencies so it may be disabled
-    double_miller_loop_test<bn128_pp>();
-#endif
 }
 
 TEST_F(CurveBilinearityTest, AffinePairingTest)

@@ -28,14 +28,6 @@ typedef alt_bn128_pp default_ec_pp;
 } // namespace libff
 #endif
 
-#ifdef CURVE_BN128
-#define LIBFF_DEFAULT_EC_PP_DEFINED
-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
-namespace libff {
-typedef bn128_pp default_ec_pp;
-} // namespace libff
-#endif
-
 #ifdef CURVE_EDWARDS
 #define LIBFF_DEFAULT_EC_PP_DEFINED
 #include <libff/algebra/curves/edwards/edwards_pp.hpp>
