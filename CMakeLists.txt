@@ -77,7 +77,7 @@ option(
 option(
   USE_ASM
   "Use architecture-specific optimized assembly code"
-  ON
+  OFF
 )
 
 option(
@@ -188,6 +188,11 @@ if("${PERFORMANCE}")
     CMAKE_EXE_LINKER_FLAGS
     "${CMAKE_EXE_LINKER_FLAGS} -flto"
   )
+endif()
+
+if("${USE_ASM}")
+  add_definitions(-DUSE_ASM)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mpclmul -msse4.1") # Used for binary fields.
 endif()
 
 # Configure CCache if available
