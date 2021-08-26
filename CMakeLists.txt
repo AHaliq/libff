@@ -190,11 +190,6 @@ if("${PERFORMANCE}")
   )
 endif()
 
-if("${USE_ASM}")
-  add_definitions(-DUSE_ASM)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mpclmul -msse4.1") # Used for binary fields.
-endif()
-
 # Configure CCache if available
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
